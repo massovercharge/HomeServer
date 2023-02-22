@@ -95,7 +95,24 @@ curl ipecho.net/plain
 
 ## Shared storage between Proxmox containers using bind mounts
 
+### Mount usb disk by uuid
+1. List the uudi of all connected devices:
+```
+blkid
+```
+2. Copy the UUID of the disk you want to mount and insert it in a mount command:
+```
+mount UUID=<<paste uuid>> /mnt/path/to/empty/folder
+```
 
+x. Open the config file of the container you want to add the mount point to:
+```
+nano /etc/pve/lxc/container-id.conf
+```
+y. Add a bind mount command to the LXC container config:
+```
+mp0: /mnt/path/to/empty/folder,mp=/mnt/folder/inside/ct
+```
 
 Sources:
 - [x] https://itsembedded.com/sysadmin/proxmox_bind_unprivileged_lxc/
