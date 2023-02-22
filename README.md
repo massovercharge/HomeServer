@@ -104,6 +104,10 @@ blkid
 ```
 mount UUID=<<paste uuid>> /mnt/path/to/empty/folder
 ```
+3. To have linux automatically mount the disk on reboot, add the line to the fstab file:
+```
+UUID=<<paste uuid>> /mnt/path/to/empty/folder ext4 defaults 0 0
+```
 
 x. Open the config file of the container you want to add the mount point to:
 ```
