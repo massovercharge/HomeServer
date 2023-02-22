@@ -44,7 +44,7 @@ Sources:
 
 1. Once wireguard has been installed edit the config file, it may have a different name but wg0 is common:
 ```
-sudo nano /etc/wireguard/wg0.conf
+nano /etc/wireguard/wg0.conf
 ```
 
 2. Add the following snippet to the config:
