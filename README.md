@@ -78,9 +78,12 @@ systemctl start wg-quick@wg0
 ```
 systemctl status wg-quick@wg0
 ```
-7. Check the public ip:
+7. Check the public ip and location:
 ```
-curl ifconfig.me
+curl ipinfo.io/ip
+curl ipinfo.io/country
+curl ipinfo.io/city
+curl ipinfo.io
 ```
 
 ##### Sources:
