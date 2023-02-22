@@ -161,8 +161,13 @@ mp0: /mnt/path/to/empty/folder,mp=/mnt/folder/inside/ct
   - second integer is the end of the range of identifiers to remap
   - third integer is the number of identifiers to remap (i.e. the size of the range)
 
-    
-    
+### Setting permissions of the bind mount to match our remapped user
+1. To allow our remapped user read/write access to the bind mount inside the container we first need to set ownership of the mounted disk on the host to 1000:1000
+```
+chown 1000:1000 /mnt/path/to/empty/folder -R
+```
+
+
 Sources:
 - [x] https://itsembedded.com/sysadmin/proxmox_bind_unprivileged_lxc/
 - [ ] https://virtualizeeverything.com/2022/05/18/passing-usb-storage-drive-to-proxmox-lxc/
