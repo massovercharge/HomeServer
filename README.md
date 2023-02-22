@@ -154,6 +154,12 @@ mp0: /mnt/path/to/empty/folder,mp=/mnt/folder/inside/ct
     ```
 3. This guide was synthesized from https://proxmox-idmap-helper.nieradko.com/ using the following input:
 ![image](https://user-images.githubusercontent.com/26527393/220623043-825595b2-3849-4287-8bdb-69451ef49967.png)
+4. Unwrapping the lxc.idmap commands:
+  - "u" means user id mapping
+  - "g" means group id mapping
+  - first integer is the start of the range of identifiers to remap
+  - second integer is the end of the range of identifiers to remap
+  - third integer is the number of identifiers to remap (i.e. the size of the range)
 
     
     
