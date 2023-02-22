@@ -176,7 +176,8 @@ mp0: /mnt/path/to/folder/on/mounted/device,mp=/mnt/folder/inside/ct
     lxc.idmap: g 1001 101001 64535
     ```
 3. Once step 1 has been done for a particular host, step 2 can be repeated for all containers nessesary containers by copy/pasting the lxc.idmap lines (and the bind mount 'mp0: ...')
-3. This guide was synthesized from https://proxmox-idmap-helper.nieradko.com/ using the following input:
+4. (To be tested) Remember to setup any docker container that need access to the bind mount to run as this user.
+5. This guide was synthesized from https://proxmox-idmap-helper.nieradko.com/ using the following input:
 ![image](https://user-images.githubusercontent.com/26527393/220623043-825595b2-3849-4287-8bdb-69451ef49967.png)
 4. Unwrapping the lxc.idmap commands:
   - "u" means user id mapping
