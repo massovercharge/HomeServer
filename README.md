@@ -96,7 +96,7 @@ curl ipecho.net/plain
 ## Shared storage between Proxmox containers using bind mounts
 
 ### Mount usb disk by uuid
-1. List the uudi of all connected devices:
+1. List the UUIDs of all connected devices:
 ```
 blkid
 ```
@@ -111,7 +111,7 @@ UUID={paste uuid} /mnt/path/to/empty/folder ext4 defaults 0 0
 
 x. Open the config file of the container you want to add the mount point to:
 ```
-nano /etc/pve/lxc/container-id.conf
+nano /etc/pve/lxc/{container_id}.conf
 ```
 y. Add a bind mount command to the LXC container config:
 ```
