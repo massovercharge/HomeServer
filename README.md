@@ -153,7 +153,7 @@ mp0: /mnt/path/to/empty/folder,mp=/mnt/folder/inside/ct
     lxc.idmap: g 1001 101001 64535
     ```
 3. This guide was synthesized from https://proxmox-idmap-helper.nieradko.com/ using the following input:
-  - ![image](https://user-images.githubusercontent.com/26527393/220623043-825595b2-3849-4287-8bdb-69451ef49967.png)
+![image](https://user-images.githubusercontent.com/26527393/220623043-825595b2-3849-4287-8bdb-69451ef49967.png)
 
     
     
