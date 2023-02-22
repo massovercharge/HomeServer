@@ -66,8 +66,25 @@ PublicKey = JPT1veXLmasj2uQDstX24mpR7VWD+GmV8JDkidkz91Q=
 Endpoint = us-tx1.wg.ivpn.net:2049
 AllowedIPs = 0.0.0.0/0
 ```
+4. Set up the wg0 interface to startup at boot:
+```
+systemctl enable --now wg-quick@wg0
+```
+5. Start the service:
+```
+systemctl start wg-quick@wg0
+```
+6. Status check:
+```
+systemctl status wg-quick@wg0
+```
+7. Check the public ip:
+```
+curl ifconfig.me
+```
 
 ##### Sources:
+- https://www.ivpn.net/knowledgebase/linux/linux-autostart-wireguard-in-systemd/
 - https://www.ivpn.net/knowledgebase/linux/linux-wireguard-kill-switch/
 
 ##### Further resources:
