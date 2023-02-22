@@ -96,30 +96,33 @@ curl ipecho.net/plain
 ## Shared storage between Proxmox containers using bind mounts
 
 ### Mount usb disk by uuid
-1. List the UUIDs of all connected devices:
+Next time: Try skipping to b onwards and see if these steps alone are enough.
+1a. List the UUIDs of all connected devices:
 ```
 blkid
 ```
-2. Copy the UUID of the disk you want to mount and insert it in a mount command:
+2a. Copy the UUID of the disk you want to mount and insert it in a mount command:
 ```
 mount UUID={paste uuid} /mnt/path/to/empty/folder
 ```
-3. To have linux automatically mount the disk on reboot, add the line to the fstab file:
+3a. To have linux automatically mount the disk on reboot, add the line to the fstab file:
 ```
 UUID={paste uuid} /mnt/path/to/empty/folder ext4 defaults 0 0
 ```
-
-x. Open the config file of the container you want to add the mount point to:
+4b. (Optional (wipe disk):) Go to proxmox web interface > host > Disks
+    - select the new disk and wipe
+6b. (Optional:) Go to host > Disks > Directory > Create: Directory > Make a filesystem on the disk, fx ext4 and give it a name.
+7. Open the config file of the container you want to add the mount point to:
 ```
 nano /etc/pve/lxc/{container_id}.conf
 ```
-y. Add a bind mount command to the LXC container config:
+8. Add a bind mount command to the LXC container config (you can map any existing folder on the mounted device to a folder inside the container):
 ```
-mp0: /mnt/path/to/empty/folder,mp=/mnt/folder/inside/ct
+mp0: /mnt/path/to/folder/on/mounted/device,mp=/mnt/folder/inside/ct
 ```
 
 ### Remapping uig/gid to have the same user on host and container (example of UID:GID 1000:1000)
-1. Allow host to remap the udi/gid by adding the follwing two lines to the subuid and subgid files:
+1. Allow host to remap the uid/gid by adding the follwing two lines to the subuid and subgid files:
   - Into:
     ```
     nano /etc/subuid
