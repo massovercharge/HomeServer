@@ -178,6 +178,7 @@ Sources:
 - [x] https://www.youtube.com/watch?v=w9X94bAm3dI
 - [ ] https://www.youtube.com/watch?v=iz861jRUujw
 - [x] https://proxmox-idmap-helper.nieradko.com/
+- [ ] https://kcore.org/2022/02/05/lxc-subuid-subgid/ # some explanations for the commands used for user remapping, but i have not veryfied the correctness of the commands
 
 ## Setting up Fileserver turnkey linux setup container
 Remember to set permissions of new files and folders as 775
