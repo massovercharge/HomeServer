@@ -102,11 +102,11 @@ blkid
 ```
 2. Copy the UUID of the disk you want to mount and insert it in a mount command:
 ```
-mount UUID=<<paste uuid>> /mnt/path/to/empty/folder
+mount UUID={paste uuid} /mnt/path/to/empty/folder
 ```
 3. To have linux automatically mount the disk on reboot, add the line to the fstab file:
 ```
-UUID=<<paste uuid>> /mnt/path/to/empty/folder ext4 defaults 0 0
+UUID={paste uuid} /mnt/path/to/empty/folder ext4 defaults 0 0
 ```
 
 x. Open the config file of the container you want to add the mount point to:
@@ -118,11 +118,51 @@ y. Add a bind mount command to the LXC container config:
 mp0: /mnt/path/to/empty/folder,mp=/mnt/folder/inside/ct
 ```
 
+### Remapping uig/gid to have the same user on host and container (example of UID:GID 1000:1000)
+1. Allow host to remap the udi/gid by adding the follwing two lines to the subuid and subgid files:
+  - Into:
+    ```
+    nano /etc/subuid
+    ```
+  - Paste:
+    ```
+    root:100000:65536
+    root:1000:1
+    ```
+  - Into:
+    ```
+    nano /etc/subgid
+    ```
+  - Paste:
+    ```
+    root:100000:65536
+    root:1000:1
+    ```
+2. Configure the remapping inside the containder config file:
+  - From the host, enter:
+    ```
+    nano /etc/pve/lxc/{container_id}.conf
+    ```
+  - Paste these lines into the container config file:
+    ```
+    lxc.idmap: u 0 100000 1000
+    lxc.idmap: g 0 100000 1000
+    lxc.idmap: u 1000 1000 1
+    lxc.idmap: g 1000 1000 1
+    lxc.idmap: u 1001 101001 64535
+    lxc.idmap: g 1001 101001 64535
+    ```
+3. This guide was synthesized from https://proxmox-idmap-helper.nieradko.com/ using the following input:
+  - ![image](https://user-images.githubusercontent.com/26527393/220623043-825595b2-3849-4287-8bdb-69451ef49967.png)
+
+    
+    
 Sources:
 - [x] https://itsembedded.com/sysadmin/proxmox_bind_unprivileged_lxc/
 - [ ] https://virtualizeeverything.com/2022/05/18/passing-usb-storage-drive-to-proxmox-lxc/
 - [x] https://www.youtube.com/watch?v=w9X94bAm3dI
 - [ ] https://www.youtube.com/watch?v=iz861jRUujw
+- [x] https://proxmox-idmap-helper.nieradko.com/
 
 ## Setting up Fileserver turnkey linux setup container
 Remember to set permissions of new files and folders as 775
