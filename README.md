@@ -203,6 +203,9 @@ Sources:
 
 ## Setting up Fileserver turnkey linux setup container
 Remember to set permissions of new files and folders as 775
+Remember to create the group (gid 1000) before creating the user (uid 1000), then when creating the user set the group (gid 1000) as primary group.
+![image](https://user-images.githubusercontent.com/26527393/221171959-2b639063-d828-40ee-a99b-6c4e0547bbc3.png)
+
 
 ##### Sources:
 - [x] https://www.youtube.com/watch?v=UnXxJMjW4LE
