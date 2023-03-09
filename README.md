@@ -36,6 +36,36 @@ docker run -d \
 portainer/portainer-ce:latest
 ```
 
+### Upgrade Portainer image to latest
+
+1. Get the CONTAINER ID of portainer
+```
+docker container ls
+```
+2. Stop the portainer docker using the ID, refrencing the first 4 characters if the id should be enough
+```
+docker stop >CTID<
+```
+3. Remove the image
+```
+docker rm >CTID<
+```
+4. Pull the latest image
+```
+docker pull portainer/portainer-ce:latest
+```
+5. Start the container again
+```
+docker run -d \
+--name="portainer" \
+--restart on-failure \
+-p 9000:9000 \
+-p 8000:8000 \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v portainer_data:/data \
+portainer/portainer-ce:latest
+```
+
 #####
 Sources:
 - https://thehomelab.wiki/books/docker/page/installing-docker-and-portainer-to-use-with-the-edge-agent
