@@ -160,8 +160,10 @@ mount UUID={paste uuid} /mnt/path/to/empty/folder
 UUID={paste uuid} /mnt/path/to/empty/folder ext4 defaults 0 0
 ```
 4b. (Optional (wipe disk):) Go to proxmox web interface > host > Disks
-    - select the new disk and wipe
+    - select the new disk and wipe.
+    
 6b. (Optional:) Go to host > Disks > Directory > Create: Directory > Make a filesystem on the disk, fx ext4 and give it a name.
+
 7. Open the config file of the container you want to add the mount point to:
 ```
 nano /etc/pve/lxc/{container_id}.conf
