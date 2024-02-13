@@ -242,3 +242,6 @@ Sources:
 
 ##### Sources:
 - [x] https://www.youtube.com/watch?v=UnXxJMjW4LE
+
+## Stream video from rclone mount
+rclone mount crypt: /mnt/crypt --config=/root/.config/rclone/rclone.conf --umask=022 --gid=1000 --uid=1000 --allow-other --timeout=1h  --poll-interval=15s --dir-cache-time=1000h --cache-dir=/mnt/personal/personal/embycache --vfs-cache-mode=full --vfs-cache-max-size=50G --vfs-cache-max-age=12h --daemon
